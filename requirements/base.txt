@@ -43,6 +43,6 @@ redis>=2.10.0
 # Your custom requirements go here
 
 # Wagtail
-wagtail==1.9
+wagtail==1.13.1
 django-modeltranslation==0.12
 wagtail-modeltranslation==0.6.0rc1
