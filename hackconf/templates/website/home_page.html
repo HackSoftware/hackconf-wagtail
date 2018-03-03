@@ -1,4 +1,5 @@
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags %}
+{% load static %}
 <!doctype html>
 <html>
   <head lang="bg">
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 
-    <meta property="og:image" content="http://hackconf.bg/static/images/hackconf2016.jpg"/>
+    <meta property="og:image" content="{% static "images/hackconf2016.jpg" %}"/>
     <meta property="og:url" content="http://hackconf.bg/"/>
     <meta property="og:title" content="HackConf 2016"/>
     <meta property="og:description" content='HackConf е ежегодна технологична и мотивационна конференция, състояща се в София, България. HackConf 2016 ще надгради започнатото през миналата година, темата ще бъде "Как да станем по-добри програмисти и IT специалисти?". HackConf2016 е безплатна и отворена за хора от цялата страна...'/>
@@ -16,9 +17,9 @@
 
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Roboto:300,400,700&subset=cyrillic">
 
     <!-- Facebook Pixel Code -->
@@ -639,15 +640,15 @@
             integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
             crossorigin="anonymous">
     </script>
-    <script src="/static/js/foundation.core.js"></script>
-    <script src="/static/js/foundation.util.mediaQuery.js"></script>
-    <script src="/static/js/foundation.util.triggers.js"></script>
-    <script src="/static/js/foundation.responsiveMenu.js"></script>
-    <script src="/static/js/foundation.responsiveToggle.js"></script>
-    <script src="/static/js/foundation.sticky.js"></script>
+    <script src="{% static "js/foundation.core.js"%}" ></script>
+    <script src="{% static "js/foundation.util.mediaQuery.js"%}" ></script>
+    <script src="{% static "js/foundation.util.triggers.js"%}" ></script>
+    <script src="{% static "js/foundation.responsiveMenu.js"%}" ></script>
+    <script src="{% static "js/foundation.responsiveToggle.js"%}" ></script>
+    <script src="{% static "js/foundation.sticky.js"%}" ></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-    <script type="text/javascript" src="/static/js/scripts.js"></script>
-    <script type="text/javascript" src="/static/js/project.js"></script>
+    <script type="text/javascript" src="{% static "js/scripts.js"%}" ></script>
+    <script type="text/javascript" src="{% static "js/project.js"%}" ></script>
   </body>
 </html>
 
