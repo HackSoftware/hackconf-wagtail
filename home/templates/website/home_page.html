@@ -133,10 +133,15 @@
                 {{ page.about_text|richtext }}
               </div>
               <div class="box box-video right">
+                {% if not page.video_id or page.video_id == "" %}
+                {% image page.about_image width-600 as about_image %}
+                <div class="video-wrapper" style="background-image:url({{ about_image.url }});"></div>
+                {% else %}
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/{{page.video_id}}" frameborder="0" allowfullscreen>
                   </iframe>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>

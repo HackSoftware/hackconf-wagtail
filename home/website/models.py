@@ -32,6 +32,13 @@ class HomePage(Page):
     # navigation section
     # about section
     video_id = models.CharField(max_length=255, blank=True, null=True)
+    about_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     about_text = RichTextField(blank=True, null=True)
     # speakers section
     # TODO: add fields for this section
@@ -151,6 +158,7 @@ class HomePage(Page):
         FieldPanel('live_stream'),
         FieldPanel('header_text'),
         FieldPanel('video_id'),
+        ImageChooserPanel('about_image'),
         FieldPanel('about_text'),
 
         InlinePanel('navigation_items', label="Navigation items"),

@@ -3814,6 +3814,8 @@ p + .stat {
   position: relative;
   height: 0;
   padding: 0.625rem 0.625rem 18.75rem 0.625rem;
+  background-position: center;
+  background-size: cover;
 }
 @media screen and (min-width: 64em) and (max-width: 74.9375em) {
   .container-annotation .box-video .video-wrapper {
