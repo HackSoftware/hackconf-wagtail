@@ -32,6 +32,13 @@ class HomePage(Page):
     # navigation section
     # about section
     video_id = models.CharField(max_length=255, blank=True, null=True)
+    about_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     about_text = RichTextField(blank=True, null=True)
     # speakers section
     # TODO: add fields for this section
@@ -66,6 +73,7 @@ class HomePage(Page):
     attendees_text = RichTextField(blank=True, null=True)
     streaming_text = RichTextField(blank=True, null=True)
     fb_text = RichTextField(blank=True, null=True)
+    show_sponsorship_document = models.BooleanField(default=False)
     sponsors_partnership_description = RichTextField(blank=True, null=True)
     sponsors_partnership_document = models.ForeignKey(
         'wagtaildocs.Document',
@@ -82,6 +90,7 @@ class HomePage(Page):
     show_other_partners = models.BooleanField(default=True)
     show_media_partners = models.BooleanField(default=True)
     show_branch_partners = models.BooleanField(default=True)
+    show_old_partners = models.BooleanField(default=True)
 
     general_partners_title = models.CharField(max_length=50, null=True, blank=True)
     platinum_partners_title = models.CharField(max_length=50, null=True, blank=True)
@@ -150,6 +159,7 @@ class HomePage(Page):
         FieldPanel('live_stream'),
         FieldPanel('header_text'),
         FieldPanel('video_id'),
+        ImageChooserPanel('about_image'),
         FieldPanel('about_text'),
 
         InlinePanel('navigation_items', label="Navigation items"),
@@ -175,6 +185,7 @@ class HomePage(Page):
         FieldPanel('attendees_text'),
         FieldPanel('streaming_text'),
         FieldPanel('fb_text'),
+        FieldPanel('show_sponsorship_document'),
         FieldPanel('sponsors_partnership_description'),
         DocumentChooserPanel('sponsors_partnership_document'),
         FieldPanel('show_sponsors_section'),
@@ -199,6 +210,8 @@ class HomePage(Page):
         FieldPanel('branch_partners_title'),
         FieldPanel('show_branch_partners'),
         InlinePanel('branch_partners', label="Branch Partners"),
+        FieldPanel('show_old_partners'),
+        InlinePanel('old_partners', label="Old Partners"),
 
         InlinePanel('past_events', label="Past Events"),
 
@@ -313,6 +326,8 @@ class Speaker(models.Model):
     name = models.CharField(max_length=255)
     video_url = models.URLField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
+    rich_description = RichTextField(blank=True, null=True)
+    talk_description = RichTextField(blank=True, null=True)
     picture = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -325,6 +340,8 @@ class Speaker(models.Model):
         FieldPanel('name'),
         FieldPanel('video_url'),
         FieldPanel('description'),
+        FieldPanel('rich_description'),
+        FieldPanel('talk_description'),
         ImageChooserPanel('picture'),
     ]
 
@@ -364,6 +381,18 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class OldPartners(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='old_partners')
+    partner = models.ForeignKey('website.Partner', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('partner'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.partner.name)
 
 
 class GeneralPartners(Orderable, models.Model):

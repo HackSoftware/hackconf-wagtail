@@ -133,10 +133,15 @@
                 {{ page.about_text|richtext }}
               </div>
               <div class="box box-video right">
+                {% if not page.video_id or page.video_id == "" %}
+                {% image page.about_image width-600 as about_image %}
+                <div class="video-wrapper" style="background-image:url({{ about_image.url }});"></div>
+                {% else %}
                 <div class="video-wrapper">
                   <iframe src="https://www.youtube.com/embed/{{page.video_id}}" frameborder="0" allowfullscreen>
                   </iframe>
                 </div>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -280,10 +285,10 @@
             <div class="lecturers-wrapper">
               <div class="row">
                 {% for relation in page.speakers_info.all %}
+                {% image relation.speaker.picture fill-300x300 as speaker_picture %}
                 <div class="small-6 medium-4 large-3 columns spacer lecturer-container">
                   <div class="lecturer">
-                    {% image relation.speaker.picture fill-300x300 as speaker_picture %}
-                    <img src="{{speaker_picture.url}}">
+                    <img src="{{speaker_picture.url}}" class="lecturer-modal-trigger">
                     <div class="text-container">
                       <h3 class="name">{{relation.speaker.name}}</h3>
                       <p class="desk">
@@ -291,6 +296,29 @@
                       </p>
                       <div class="abs-container-icon">
                         <a href="{{relation.speaker.video_url}}" target="_blank"><i class="icon icon-youtube lecturer-video"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lecturer-modal-wrapper">
+                    <div class="lecturer-modal-container">
+                      <div class="lecturer-modal row">
+                        <div class="close-button">X</div>
+                        <div class="medium-4">
+                          <img src="{{speaker_picture.url}}">
+                        </div>
+                        <div class="medium-8">
+                          <div class="heading name">
+                            {{relation.speaker.name}}
+                          </div>
+                          <div>
+                            <span class="heading">About:</span>
+                            {{relation.speaker.rich_description|richtext}}
+                          </div>
+                          <div>
+                            <span class="heading">Talk:</span>
+                            {{relation.speaker.talk_description|richtext}}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -348,12 +376,14 @@
             </div>
           </div>
         </div>
+        {% if page.show_sponsorship_document %}
         <div class="row">
           <div class="medium-centered columns menu-centered" >
             {{page.sponsors_partnership_description|richtext}}
             <a href="{{page.sponsors_partnership_document.file.url}}" target="_blank"><i class="icon icon-pdf pdf-download"></i></a>
           </div>
         </div>
+        {% endif %}
         {% if page.show_sponsors_section %}
           {% if page.show_general_partners %}
           <div class="row">
@@ -488,6 +518,27 @@
         {% endif %}
       </article>
     </section>
+    {% if page.show_old_partners %}
+    <section class="section divider old_partners">
+      <article class="contaner container-content">
+        <div class="row">
+          <div class="small-12 medium-8 medium-centered columns menu-centered">
+              <h4 class="sp-t-50">Past years partners</h4>
+              <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
+                {% for relation in page.old_partners.all %}
+                <div class="column tcell">
+                  <a href="{{relation.partner.website_url}}" target="_blank">
+                    {% image relation.partner.logo max-240x120 as partner_logo %}
+                    <img src="{{partner_logo.url}}" alt="">
+                  </a>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+        </div>
+      </article>
+    </section>
+    {% endif %}
     <section id="past" class="section section-gray-bg secondary past-events">
       <article class="container">
         <div class="past-events-buttons">
