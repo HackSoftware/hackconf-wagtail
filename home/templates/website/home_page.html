@@ -348,12 +348,14 @@
             </div>
           </div>
         </div>
+        {% if page.show_sponsorship_document %}
         <div class="row">
           <div class="medium-centered columns menu-centered" >
             {{page.sponsors_partnership_description|richtext}}
             <a href="{{page.sponsors_partnership_document.file.url}}" target="_blank"><i class="icon icon-pdf pdf-download"></i></a>
           </div>
         </div>
+        {% endif %}
         {% if page.show_sponsors_section %}
           {% if page.show_general_partners %}
           <div class="row">

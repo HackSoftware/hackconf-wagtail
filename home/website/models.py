@@ -66,6 +66,7 @@ class HomePage(Page):
     attendees_text = RichTextField(blank=True, null=True)
     streaming_text = RichTextField(blank=True, null=True)
     fb_text = RichTextField(blank=True, null=True)
+    show_sponsorship_document = models.BooleanField(default=False)
     sponsors_partnership_description = RichTextField(blank=True, null=True)
     sponsors_partnership_document = models.ForeignKey(
         'wagtaildocs.Document',
@@ -175,6 +176,7 @@ class HomePage(Page):
         FieldPanel('attendees_text'),
         FieldPanel('streaming_text'),
         FieldPanel('fb_text'),
+        FieldPanel('show_sponsorship_document'),
         FieldPanel('sponsors_partnership_description'),
         DocumentChooserPanel('sponsors_partnership_document'),
         FieldPanel('show_sponsors_section'),
