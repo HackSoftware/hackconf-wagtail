@@ -315,6 +315,8 @@ class Speaker(models.Model):
     name = models.CharField(max_length=255)
     video_url = models.URLField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
+    rich_description = RichTextField(blank=True, null=True)
+    talk_description = RichTextField(blank=True, null=True)
     picture = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -327,6 +329,8 @@ class Speaker(models.Model):
         FieldPanel('name'),
         FieldPanel('video_url'),
         FieldPanel('description'),
+        FieldPanel('rich_description'),
+        FieldPanel('talk_description'),
         ImageChooserPanel('picture'),
     ]
 

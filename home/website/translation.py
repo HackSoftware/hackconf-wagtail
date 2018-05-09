@@ -56,7 +56,7 @@ class NavigationItemTranslationOptions(WagtailTranslationOptions):
 
 @register(Speaker)
 class SpeakerTranslationOptions(WagtailTranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'description', 'rich_description', 'talk_description')
 
     required_languages = ('bg', 'en')
 

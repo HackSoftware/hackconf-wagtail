@@ -90,3 +90,11 @@ $(".newsletter button[type='submit']").click(function(e) {
   if(email == "") return;
   window.open('https://my.sendinblue.com/users/subscribe/js_id/26ky4/id/5/email/'+email)
 });
+
+$(".lecturer .lecturer-modal-trigger").click(function() {
+  $(this).parents(".lecturer-container").find(".lecturer-modal-wrapper").show();
+});
+
+$(".lecturer-modal .close-button").click(function() {
+  $(this).parents(".lecturer-modal-wrapper").hide()
+});
