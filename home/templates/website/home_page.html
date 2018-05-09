@@ -518,6 +518,27 @@
         {% endif %}
       </article>
     </section>
+    {% if page.show_old_partners %}
+    <section class="section divider old_partners">
+      <article class="contaner container-content">
+        <div class="row">
+          <div class="small-12 medium-8 medium-centered columns menu-centered">
+              <h4 class="sp-t-50">Past years partners</h4>
+              <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
+                {% for relation in page.old_partners.all %}
+                <div class="column tcell">
+                  <a href="{{relation.partner.website_url}}" target="_blank">
+                    {% image relation.partner.logo max-240x120 as partner_logo %}
+                    <img src="{{partner_logo.url}}" alt="">
+                  </a>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+        </div>
+      </article>
+    </section>
+    {% endif %}
     <section id="past" class="section section-gray-bg secondary past-events">
       <article class="container">
         <div class="past-events-buttons">

@@ -90,6 +90,7 @@ class HomePage(Page):
     show_other_partners = models.BooleanField(default=True)
     show_media_partners = models.BooleanField(default=True)
     show_branch_partners = models.BooleanField(default=True)
+    show_old_partners = models.BooleanField(default=True)
 
     general_partners_title = models.CharField(max_length=50, null=True, blank=True)
     platinum_partners_title = models.CharField(max_length=50, null=True, blank=True)
@@ -209,6 +210,8 @@ class HomePage(Page):
         FieldPanel('branch_partners_title'),
         FieldPanel('show_branch_partners'),
         InlinePanel('branch_partners', label="Branch Partners"),
+        FieldPanel('show_old_partners'),
+        InlinePanel('old_partners', label="Old Partners"),
 
         InlinePanel('past_events', label="Past Events"),
 
@@ -378,6 +381,18 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class OldPartners(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='old_partners')
+    partner = models.ForeignKey('website.Partner', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('partner'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.partner.name)
 
 
 class GeneralPartners(Orderable, models.Model):
