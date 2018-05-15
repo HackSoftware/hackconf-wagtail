@@ -152,6 +152,13 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    footer_cookie_statement_document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('header_dates'),
@@ -232,6 +239,7 @@ class HomePage(Page):
         DocumentChooserPanel('footer_code_of_conduct_document'),
         DocumentChooserPanel('footer_terms_and_conditions_document'),
         DocumentChooserPanel('footer_privacy_policy_document'),
+        DocumentChooserPanel('footer_cookie_statement_document'),
     ]
 
     promote_panels = Page.promote_panels + [

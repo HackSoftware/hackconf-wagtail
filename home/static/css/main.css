@@ -4782,3 +4782,13 @@ div.info-slots + div.info-slots::after {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
+
+.old_partners .container-content {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+#sponsors .container-content {
+  padding-top: 3rem;
+  padding-bottom: 0rem;
+}
