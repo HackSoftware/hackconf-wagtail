@@ -523,8 +523,8 @@
       <article class="contaner container-content">
         <div class="row">
           <div class="small-12 medium-8 medium-centered columns menu-centered">
-              <h4 class="sp-t-50">Past years partners</h4>
-              <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
+              <h4 class="sp-t-50">{{page.old_partners_title}}</h4>
+              <div class="row small-up-2 medium-up-3 large-up-6 align-center wrapper-sponsors">
                 {% for relation in page.old_partners.all %}
                 <div class="column tcell">
                   <a href="{{relation.partner.website_url}}" target="_blank">

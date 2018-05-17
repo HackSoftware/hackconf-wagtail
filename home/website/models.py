@@ -99,6 +99,7 @@ class HomePage(Page):
     other_partners_title = models.CharField(max_length=50, null=True, blank=True)
     media_partners_title = models.CharField(max_length=50, null=True, blank=True)
     branch_partners_title = models.CharField(max_length=50, null=True, blank=True)
+    old_partners_title = models.CharField(max_length=50, null=True, blank=True)
 
     # past events section
 
@@ -218,6 +219,7 @@ class HomePage(Page):
         FieldPanel('show_branch_partners'),
         InlinePanel('branch_partners', label="Branch Partners"),
         FieldPanel('show_old_partners'),
+        FieldPanel('old_partners_title'),
         InlinePanel('old_partners', label="Old Partners"),
 
         InlinePanel('past_events', label="Past Events"),

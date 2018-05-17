@@ -20,6 +20,7 @@ class HomePageTranslationOptions(WagtailTranslationOptions):
         'other_partners_title',
         'media_partners_title',
         'branch_partners_title',
+        'old_partners_title',
         'sponsors_text',
         'sponsors_partnership_description',
         # tickets section

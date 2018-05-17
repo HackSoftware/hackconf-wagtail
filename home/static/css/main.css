@@ -4788,6 +4788,11 @@ div.info-slots + div.info-slots::after {
   padding-bottom: 2rem;
 }
 
+.old_partners .wrapper-sponsors .column {
+  margin-bottom: 0;
+  line-height: 80px;
+}
+
 #sponsors .container-content {
   padding-top: 3rem;
   padding-bottom: 0rem;
