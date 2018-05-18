@@ -4101,7 +4101,7 @@ div.info-slots + div.info-slots::after {
 }
 @media screen and (min-width: 74.9375em) {
   .footer .left-row {
-    padding: 35px 0 0 35px;
+    padding: 95px 0 0 35px;
   }
 }
 .footer .right-row {
@@ -4110,7 +4110,7 @@ div.info-slots + div.info-slots::after {
 }
 @media screen and (min-width: 74.9375em) {
   .footer .right-row {
-    padding: 35px 65px 0 0;
+    padding: 95px 65px 0 0;
   }
 }
 .footer .right-row p {
