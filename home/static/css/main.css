@@ -4087,6 +4087,7 @@ div.info-slots + div.info-slots::after {
   /*height: 16.625rem;*/
   color: #fff;
   background-color: #080705;
+  min-height: 16.625rem;
 }
 .footer p {
   margin-bottom: 0;
