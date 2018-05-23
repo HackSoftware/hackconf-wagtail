@@ -30,6 +30,7 @@ ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['.hackconf.bg'])
 
 INSTALLED_APPS += ('gunicorn', )
 
+SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=True)
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See:
