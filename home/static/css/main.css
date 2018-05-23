@@ -3967,6 +3967,13 @@ p + .stat {
   height: 15.625rem;
   background-color: #fff;
 }
+@media screen and (max-width: 320px) {
+  .map-placeholder {
+    width: 100%;
+    height: 18rem;
+  }
+}
+
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .map-placeholder {
     height: 11.25rem;
@@ -4641,24 +4648,6 @@ div.info-slots + div.info-slots::after {
 @media screen and (max-width: 768px) {
   #tickets iframe {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  #tickets iframe {
-    height: 620px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  #tickets iframe {
-    height: 680px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  #tickets iframe {
-    height: 810px;
   }
 }
 
