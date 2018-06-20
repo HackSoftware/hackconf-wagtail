@@ -1,0 +1,69 @@
+{% extends 'website/base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block header_navigation %}
+  {% include 'website/blog/blog_header_navigation.html' %}
+{% endblock header_navigation %}
+
+{% block content %}
+{% image page.heading_image width-1200 as heading_image %}
+
+<section class="breadcrumbs">
+  <article class="container">
+    <div class="row">
+      <ul>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
+        <li>
+          {{page.title}}
+        </li>
+      </ul>
+    </div>
+  </article>
+</section>
+<section class="blog-post-content">
+  <article class="container">
+    <div class="row heading">
+      <div class="medium-12 medium-centered text-center">
+        <h2>{{page.title}}</h2>
+        <img src="{{heading_image.url}}">
+      </div>
+    </div>
+  </article>
+  <article class="container">
+    <div class="row">
+      <div class="medium-12 medium-centered">
+        <div class="content">
+          {{page.content|richtext}}
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section id="location" class="section">
+  <article class="container-map">
+    <div class="row placeholder-wrapper">
+      <div class="small-4 xlarge-offset-2 large-offset-1 columns">
+        <div class="map-placeholder">
+          <h2 class="headline">{{page.location_title}}</h2>
+          <ul class="no-bullet" itemscope="" itemtype="http://schema.org/PostalAddress">
+            <li itemprop="address"><i class="icon icon-map"></i>
+              <span property="streetAddress">
+                {{page.location_place}}
+              </span>
+            </li>
+            <li itemprop="email"><i class="icon icon-envelope"></i>{{page.location_contact}}</li>
+            <li itemscope="" itemtype="http://schema.org/Event"><i class="icon icon-clock"></i>
+              {{page.location_time}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="map"></div>
+  </article>
+</section>
+{% endblock content %}
