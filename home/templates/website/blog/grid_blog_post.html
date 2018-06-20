@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% image blog_post.grid_image fill-370x280 as grid_image %}
+<div class="grid-blog-post">
+  <a href="/blog/{{blog_post.slug}}"><img src="{{grid_image.url}}"></a>
+  <div class="blog-post-grid-info">
+    <div class="date-created">{{blog_post.last_published_at}}</div>
+    <a class="blog-post-title" href="/blog/{{blog_post.slug}}">{{blog_post.title}}</a>
+    <div class="description">
+      {{blog_post.grid_description|richtext}}
+    </div>
+  </div>
+</div>

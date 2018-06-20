@@ -550,3 +550,39 @@ class PastEvents(Orderable, models.Model):
 
     def __str__(self):
         return "{} -> {}".format(self.page.title, self.partner.name)
+
+
+class Blog(Page):
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['blog_posts'] = BlogPost.objects.live()
+        return context
+
+
+class BlogPost(Page):
+    content = RichTextField()
+    grid_description = RichTextField()
+    grid_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    heading_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('grid_description'),
+        FieldPanel('content'),
+        ImageChooserPanel('grid_image'),
+        ImageChooserPanel('heading_image')
+    ]
+
+    def get_template(self, request):
+        return 'website/blog/blog_post.html'

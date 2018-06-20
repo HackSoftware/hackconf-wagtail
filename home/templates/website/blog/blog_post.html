@@ -1,0 +1,7 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% image page.heading_image width-900 as heading_image %}
+
+<img src="{{page.heading_image.url}}">
+{{page.title}}
+{{page.content|richtext}}
