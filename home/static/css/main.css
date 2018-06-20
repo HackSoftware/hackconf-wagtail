@@ -4787,7 +4787,11 @@ div.info-slots + div.info-slots::after {
   padding-bottom: 0rem;
 }
 
-.blog-post-list-heading {
+.blog-posts-section {
+  margin: 50px 0;
+}
+
+.blog-posts-section .blog-post-list-heading {
   text-align: center;
   font-size: 30px;
   color: black;
@@ -4826,4 +4830,83 @@ div.info-slots + div.info-slots::after {
 .grid-blog-post > .blog-post-grid-info > .description {
   color: rgba(0, 0, 0, 0.6);
   font-size: 18px;
+}
+
+.blog-post-content {
+  padding: 100px 0;
+}
+
+.blog-post-content .heading h2 {
+  font-weight: 400;
+  padding: 30px 0 40px 0;
+  color: black;
+}
+
+.blog-post-content .content {
+  padding-top: 60px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .blog-post-content .content {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .blog-post-content .content {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.blog-post-content .content .full-width {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.blog-post-content .content .left {
+  float: left;
+  margin: 0px 20px 20px 0;
+}
+
+.blog-post-content .content .right {
+  float: right;
+  margin: 0px 0 20px 20px;
+}
+
+.blog-posts-section.section-gray-bg {
+  height: 30rem;
+  margin-top: 0;
+}
+
+.grid-blog-post.featured {
+  background-color: white;
+  padding: 20px;
+  margin-top: 0;
+}
+
+.blog-posts-section.featured .blog-post-list-heading {
+  margin-top: 0;
+  padding-top: 30px;
+}
+
+.blog-header-text .columns {
+  position: relative;
+}
+
+.section-header .annotation .blog-header-text .hr {
+  padding-top: 10px;
+  position: static;
+}
+
+.section-header .annotation .blog-header-text .hr:before {
+  bottom: 50%;
+}
+
+.section-header .annotation .blog-header-text h1 {
+  font-weight: 300;
 }

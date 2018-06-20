@@ -248,6 +248,13 @@ class HomePage(Page):
         FieldPanel('slug'),
     ]
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['blog_posts'] = BlogPost.objects.live()
+        context['navigation_items'] = self.navigation_items
+        context['header_image_logo'] = self.header_image_logo
+        return context
+
 
 @register_snippet
 class Lecture(models.Model):
@@ -556,6 +563,8 @@ class Blog(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['blog_posts'] = BlogPost.objects.live()
+        context['navigation_items'] = self.get_parent().specific.navigation_items
+        context['header_image_logo'] = self.get_parent().specific.header_image_logo
         return context
 
 
@@ -583,6 +592,12 @@ class BlogPost(Page):
         ImageChooserPanel('grid_image'),
         ImageChooserPanel('heading_image')
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['navigation_items'] = self.get_parent().specific.get_parent().specific.navigation_items
+        context['header_image_logo'] = self.get_parent().specific.get_parent().specific.header_image_logo
+        return context
 
     def get_template(self, request):
         return 'website/blog/blog_post.html'
