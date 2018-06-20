@@ -250,9 +250,12 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['blog_posts'] = BlogPost.objects.live()
-        context['navigation_items'] = self.navigation_items
-        context['header_image_logo'] = self.header_image_logo
+        context['footer_organized_by'] = self.footer_organized_by
+        context['footer_powered_by'] = self.footer_powered_by
+        context['footer_code_of_conduct_document'] = self.footer_code_of_conduct_document
+        context['footer_terms_and_conditions_document'] = self.footer_terms_and_conditions_document
+        context['footer_privacy_policy_document'] = self.footer_privacy_policy_document
+        context['footer_cookie_statement_document'] = self.footer_cookie_statement_document
         return context
 
 
@@ -563,8 +566,17 @@ class Blog(Page):
     def get_context(self, request):
         context = super().get_context(request)
         context['blog_posts'] = BlogPost.objects.live()
-        context['navigation_items'] = self.get_parent().specific.navigation_items
-        context['header_image_logo'] = self.get_parent().specific.header_image_logo
+        home_page = HomePage.objects.first()
+        context['header_image_logo'] = home_page.header_image_logo
+        context['footer_organized_by'] = home_page.footer_organized_by
+        context['footer_powered_by'] = home_page.footer_powered_by
+        context['footer_code_of_conduct_document'] = home_page.footer_code_of_conduct_document
+        context['footer_terms_and_conditions_document'] = home_page.footer_terms_and_conditions_document
+        context['footer_privacy_policy_document'] = home_page.footer_privacy_policy_document
+        context['footer_cookie_statement_document'] = home_page.footer_cookie_statement_document
+
+        context['featured_blog_post'] = BlogPost.objects.live().filter(featured=True).first()
+
         return context
 
 
@@ -585,18 +597,26 @@ class BlogPost(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    featured = models.BooleanField(default=False)
 
     content_panels = Page.content_panels + [
         FieldPanel('grid_description'),
         FieldPanel('content'),
         ImageChooserPanel('grid_image'),
-        ImageChooserPanel('heading_image')
+        ImageChooserPanel('heading_image'),
+        FieldPanel('featured')
     ]
 
     def get_context(self, request):
         context = super().get_context(request)
-        context['navigation_items'] = self.get_parent().specific.get_parent().specific.navigation_items
-        context['header_image_logo'] = self.get_parent().specific.get_parent().specific.header_image_logo
+        home_page = HomePage.objects.first()
+        context['header_image_logo'] = home_page.header_image_logo
+        context['footer_organized_by'] = home_page.footer_organized_by
+        context['footer_powered_by'] = home_page.footer_powered_by
+        context['footer_code_of_conduct_document'] = home_page.footer_code_of_conduct_document
+        context['footer_terms_and_conditions_document'] = home_page.footer_terms_and_conditions_document
+        context['footer_privacy_policy_document'] = home_page.footer_privacy_policy_document
+        context['footer_cookie_statement_document'] = home_page.footer_cookie_statement_document
         return context
 
     def get_template(self, request):

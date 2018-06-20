@@ -3,77 +3,60 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block header_navigation %}
-<div class="annotation">
-  <div class="logo-header">
-    {% image header_image_logo max-470x172 as header_logo %}
-    <a href="/">
-      <img src="{{header_logo.url}}">
-    </a>
-  </div>
-  <div class="row blog-header-text">
-    <div class="small-offset-1 small-3 columns">
-      <span class="hr"></span>
-    </div>
-    <div class="small-4 columns text-center">
-      <h1>BLOG</h1>
-    </div>
-    <div class="small-3 columns">
-      <span class="hr"> </span>
-    </div>
-  </div>
-</div>
+  {% include 'website/blog/blog_header_navigation.html' %}
 {% endblock header_navigation %}
 
 
 {% block content %}
+  {% if featured_blog_post %}
     <section class="section section-gray-bg blog-posts-section featured">
-      <div class="blog-post-list-heading">FEATURED</div>
+      <div class="blog-post-list-heading">LATEST NEWS</div>
       <article class="container">
         <div class="row">
           <div class="medium-12 medium-centered columns">
             <div class="container-annotation">
-              {% include 'website/blog/featured_blog_post.html' with blog_post=blog_posts.0 %}
+              {% include 'website/blog/featured_blog_post.html' with blog_post=featured_blog_post %}
             </div>
           </div>
         </div>
       </article>
     </section>
+  {% endif %}
 
-    <section class="blog-posts-section">
-      <div class="blog-post-list-heading">ALL ARTICLES</div>
-      {% for blog_post in blog_posts %}
-      <article class="container">
-        <div class="row">
-          <div class="medium-12 medium-centered">
-            {% include 'website/blog/grid_blog_post.html' with blog_post=blog_post %}
+  <section class="blog-posts-section">
+    <div class="blog-post-list-heading">ALL NEWS</div>
+    {% for blog_post in blog_posts %}
+    <article class="container">
+      <div class="row">
+        <div class="medium-12 medium-centered">
+          {% include 'website/blog/grid_blog_post.html' with blog_post=blog_post %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section id="location" class="section">
+    <article class="container-map">
+      <div class="row placeholder-wrapper">
+        <div class="small-4 xlarge-offset-2 large-offset-1 columns">
+          <div class="map-placeholder">
+            <h2 class="headline">{{page.location_title}}</h2>
+            <ul class="no-bullet" itemscope="" itemtype="http://schema.org/PostalAddress">
+              <li itemprop="address"><i class="icon icon-map"></i>
+                <span property="streetAddress">
+                  {{page.location_place}}
+                </span>
+              </li>
+              <li itemprop="email"><i class="icon icon-envelope"></i>{{page.location_contact}}</li>
+              <li itemscope="" itemtype="http://schema.org/Event"><i class="icon icon-clock"></i>
+                {{page.location_time}}
+              </li>
+            </ul>
           </div>
         </div>
-      </article>
-      {% endfor %}
-    </section>
-
-    <section id="location" class="section">
-      <article class="container-map">
-        <div class="row placeholder-wrapper">
-          <div class="small-4 xlarge-offset-2 large-offset-1 columns">
-            <div class="map-placeholder">
-              <h2 class="headline">{{page.location_title}}</h2>
-              <ul class="no-bullet" itemscope="" itemtype="http://schema.org/PostalAddress">
-                <li itemprop="address"><i class="icon icon-map"></i>
-                  <span property="streetAddress">
-                    {{page.location_place}}
-                  </span>
-                </li>
-                <li itemprop="email"><i class="icon icon-envelope"></i>{{page.location_contact}}</li>
-                <li itemscope="" itemtype="http://schema.org/Event"><i class="icon icon-clock"></i>
-                  {{page.location_time}}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="map"></div>
-      </article>
-    </section>
-
+      </div>
+      <div id="map"></div>
+    </article>
+  </section>
 {% endblock content %}

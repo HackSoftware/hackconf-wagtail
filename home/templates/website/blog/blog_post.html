@@ -3,30 +3,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block header_navigation %}
-<div class="annotation">
-  <div class="logo-header">
-    {% image header_image_logo max-470x172 as header_logo %}
-    <a href="/">
-      <img src="{{header_logo.url}}">
-    </a>
-  </div>
-  <div class="row blog-header-text">
-    <div class="small-offset-1 small-3 columns">
-      <span class="hr"></span>
-    </div>
-    <div class="small-4 columns text-center">
-      <h1>BLOG</h1>
-    </div>
-    <div class="small-3 columns">
-      <span class="hr"> </span>
-    </div>
-  </div>
-</div>
+  {% include 'website/blog/blog_header_navigation.html' %}
 {% endblock header_navigation %}
 
 {% block content %}
 {% image page.heading_image width-1200 as heading_image %}
 
+<section class="breadcrumbs">
+  <article class="container">
+    <div class="row">
+      <ul>
+        <li>
+          <a href="/blog">Blog</a>
+        </li>
+        <li>
+          {{page.title}}
+        </li>
+      </ul>
+    </div>
+  </article>
+</section>
 <section class="blog-post-content">
   <article class="container">
     <div class="row heading">

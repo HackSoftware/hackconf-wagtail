@@ -52,80 +52,8 @@
       <div ref="en">EN</div>
     </div>
     <section class="section section-header">
-      <article class="container">
-        <div class="row">
-          <div class="medium-6 medium-centered columns menu-centered">
-            <ul class="menu menu-centered">
-              <li>
-                <a href="https://twitter.com/HackConf_" target="_blank"><i class="icon icon-twitter"></i></a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/HackConference" target="_blank"><i class="icon icon-fb"></i></a>
-              </li>
-              <li>
-                <a href="https://github.com/hackbulgaria/" target="_blank"><i class="icon icon-github"></i></a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/user/HackBulgaria" target="_blank"><i class="icon icon-youtube"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="medium-8 large-8 medium-centered columns">
-            {% block header_navigation %}
-            <div class="annotation">
-              <div class="row">
-                <div class="small-3 columns">
-                  <span class="hr"></span>
-                </div>
-                <div class="small-6 columns">
-                  <p class="info">{{page.header_dates}}</p>
-                </div>
-                <div class="small-3 columns">
-                  <span class="hr"> </span>
-                </div>
-              </div>
-              <div class="logo-header">
-              {% if page.live_stream %}
-                <iframe width="660" height="415" src="{{ page.live_stream }}" frameborder="0" allowfullscreen></iframe>
-              {% else %}
-                {% image header_image_logo max-470x172 as header_logo %}
-                <a href="/">
-                  <img src="{{header_logo.url}}">
-                </a>
-              {% endif %}
-              </div>
-              {% if page.show_pre_register %}
-                <div class="pre-register-button">
-                  <a href="{{page.pre_register_url}}" target="_blank">PRE-REGISTER</a>
-                </div>
-              {% else %}
-                <h4 class="header-headline">{{page.header_text}}</h4>
-              {% endif %}
-            </div>
-            {% endblock header_navigation %}
-          </div>
-        </div>
-      </article>
-
-      <nav>
-        <div data-sticky-container>
-          <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" data-top-anchor="about" style="width:100%" data-sticky-on="large">
-            <ul class="dropdown menu menu-main" data-dropdown-menu>
-              {% for relation in navigation_items.all %}
-              <li><a href="{{ relation.navigation_item.redirect_to }}">{{ relation.navigation_item.name }}</a></li>
-              {% endfor %}
-              <li><a href="/blog">Blog</a></li>
-            </ul>
-          </div>
-          <div data-sticky data-options="marginTop:0;" data-top-anchor="about" style="width:100%" data-sticky-on="large" class="sticky-button">
-            <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
-              <button class="menu-icon menu-button" type="button" data-toggle></button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {% block header_navigation %}    
+      {% endblock header_navigation %}
     </section>
 
 
@@ -142,12 +70,12 @@
           <div class="small-6 large-3 medium-6 small-order-2 medium-order-2 large-order-1 columns left-row">
             <p class="text-center"><small>Organized by</small>
               <br>
-              {% image page.footer_organized_by.logo max-240x120 as partner_logo %}
+              {% image footer_organized_by.logo max-240x120 as partner_logo %}
               <a href="https://hackbulgaria.com/" target="_blank"><img src="{{partner_logo.url}}" class="logo-footer hb" alt="HackBulgaria logo"></a>
             </p>
             <p class="text-center"><small>Powered by</small>
               <br>
-              {% image page.footer_powered_by.logo max-240x120 as partner_logo %}
+              {% image footer_powered_by.logo max-240x120 as partner_logo %}
               <a href="https://www.hacksoft.io/" target="_blank"><img src="{{partner_logo.url}}" class="logo-footer hs" alt="HackSoft logo"></a>
             </p>
             <p class="text-center">
@@ -173,16 +101,16 @@
           </div>
           <div class="small-6 large-3 medium-6 small-order-3 medium-order-3 large-order-3 columns right-row">
             <div>
-              <a href="{{page.footer_code_of_conduct_document.file.url}}" target="_blank">Code of conduct</a>
+              <a href="{{footer_code_of_conduct_document.file.url}}" target="_blank">Code of conduct</a>
             </div>
             <div>
-              <a href="{{page.footer_terms_and_conditions_document.file.url}}" target="_blank">Terms and conditions</a>
+              <a href="{{footer_terms_and_conditions_document.file.url}}" target="_blank">Terms and conditions</a>
             </div>
             <div>
-              <a href="{{page.footer_privacy_policy_document.file.url}}" target="_blank">Privacy Policy</a>
+              <a href="{{footer_privacy_policy_document.file.url}}" target="_blank">Privacy Policy</a>
             </div>
             <div>
-              <a href="{{page.footer_cookie_statement_document.file.url}}" target="_blank">Cookie Statement</a>
+              <a href="{{footer_cookie_statement_document.file.url}}" target="_blank">Cookie Statement</a>
             </div>
           </div>
         </div>

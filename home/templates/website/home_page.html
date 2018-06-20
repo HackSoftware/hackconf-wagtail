@@ -2,6 +2,81 @@
 
 {% load staticfiles i18n wagtailimages_tags wagtailcore_tags wagtail_modeltranslation static %}
 
+{% block header_navigation %}
+<article class="container">
+  <div class="row">
+    <div class="medium-6 medium-centered columns menu-centered">
+      <ul class="menu menu-centered">
+        <li>
+          <a href="https://twitter.com/HackConf_" target="_blank"><i class="icon icon-twitter"></i></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/HackConference" target="_blank"><i class="icon icon-fb"></i></a>
+        </li>
+        <li>
+          <a href="https://github.com/hackbulgaria/" target="_blank"><i class="icon icon-github"></i></a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/user/HackBulgaria" target="_blank"><i class="icon icon-youtube"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-8 large-8 medium-centered columns">
+      <div class="annotation">
+        <div class="row">
+          <div class="small-3 columns">
+            <span class="hr"></span>
+          </div>
+          <div class="small-6 columns">
+            <p class="info">{{page.header_dates}}</p>
+          </div>
+          <div class="small-3 columns">
+            <span class="hr"> </span>
+          </div>
+        </div>
+        <div class="logo-header">
+        {% if page.live_stream %}
+          <iframe width="660" height="415" src="{{ page.live_stream }}" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% image page.header_image_logo max-470x172 as header_logo %}
+          <a href="/">
+            <img src="{{header_logo.url}}">
+          </a>
+        {% endif %}
+        </div>
+        {% if page.show_pre_register %}
+          <div class="pre-register-button">
+            <a href="{{page.pre_register_url}}" target="_blank">PRE-REGISTER</a>
+          </div>
+        {% else %}
+          <h4 class="header-headline">{{page.header_text}}</h4>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+
+<nav>
+  <div data-sticky-container>
+    <div class="top-bar" id="main-menu" data-sticky data-options="marginTop:0;" data-top-anchor="about" style="width:100%" data-sticky-on="large">
+      <ul class="dropdown menu menu-main" data-dropdown-menu>
+        {% for relation in page.navigation_items.all %}
+        <li><a href="{{ relation.navigation_item.redirect_to }}">{{ relation.navigation_item.name }}</a></li>
+        {% endfor %}
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </div>
+    <div data-sticky data-options="marginTop:0;" data-top-anchor="about" style="width:100%" data-sticky-on="large" class="sticky-button">
+      <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="large">
+        <button class="menu-icon menu-button" type="button" data-toggle></button>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endblock header_navigation %}
+
 {% block content %}
     <section id="about" class="section section-gray-bg">
       <article class="container">

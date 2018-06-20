@@ -4832,8 +4832,31 @@ div.info-slots + div.info-slots::after {
   font-size: 18px;
 }
 
+.breadcrumbs {
+  padding-top: 40px;
+}
+
+.breadcrumbs ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs ul li + li {
+  margin-left: 10px;
+}
+
+.breadcrumbs ul li + li:before {
+  display: inline-block;
+  content: ">";
+  margin-right: 7px;
+  font-size: 20px;
+}
+
 .blog-post-content {
-  padding: 100px 0;
+  padding: 40px 0 100px 0;
 }
 
 .blog-post-content .heading h2 {
@@ -4883,6 +4906,11 @@ div.info-slots + div.info-slots::after {
   margin-top: 0;
 }
 
+.blog-post-content .content .responsive-object {
+  padding-bottom: 0px !important;
+  text-align: center;
+}
+
 .grid-blog-post.featured {
   background-color: white;
   padding: 20px;
@@ -4909,4 +4937,8 @@ div.info-slots + div.info-slots::after {
 
 .section-header .annotation .blog-header-text h1 {
   font-weight: 300;
+}
+
+.section-header .annotation .blog-header-text h1 a {
+  color: white;
 }
