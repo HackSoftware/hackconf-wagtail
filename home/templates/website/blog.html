@@ -35,28 +35,4 @@
     </article>
     {% endfor %}
   </section>
-
-  <section id="location" class="section">
-    <article class="container-map">
-      <div class="row placeholder-wrapper">
-        <div class="small-4 xlarge-offset-2 large-offset-1 columns">
-          <div class="map-placeholder">
-            <h2 class="headline">{{page.location_title}}</h2>
-            <ul class="no-bullet" itemscope="" itemtype="http://schema.org/PostalAddress">
-              <li itemprop="address"><i class="icon icon-map"></i>
-                <span property="streetAddress">
-                  {{page.location_place}}
-                </span>
-              </li>
-              <li itemprop="email"><i class="icon icon-envelope"></i>{{page.location_contact}}</li>
-              <li itemscope="" itemtype="http://schema.org/Event"><i class="icon icon-clock"></i>
-                {{page.location_time}}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div id="map"></div>
-    </article>
-  </section>
 {% endblock content %}
