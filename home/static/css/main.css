@@ -4942,3 +4942,7 @@ div.info-slots + div.info-slots::after {
 .section-header .annotation .blog-header-text h1 a {
   color: white;
 }
+
+.navigation-svg-icon {
+  width:20.8px;
+}
