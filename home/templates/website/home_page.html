@@ -247,13 +247,17 @@
                   <div class="lecturer">
                     <img src="{{speaker_picture.url}}" class="lecturer-modal-trigger">
                     <div class="text-container">
-                      <h3 class="name">{{relation.speaker.name}}</h3>
+                      <h3 class="name lecturer-modal-trigger">{{relation.speaker.name}}</h3>
+                      {% if relation.speaker.description %}
                       <p class="desk">
                         {{relation.speaker.description}}
                       </p>
-                      <div class="abs-container-icon">
-                        <a href="{{relation.speaker.video_url}}" target="_blank"><i class="icon icon-youtube lecturer-video"></i></a>
-                      </div>
+                      {% endif %}
+                      {% if relation.speaker.video_url %}
+                        <div class="abs-container-icon">
+                          <a href="{{relation.speaker.video_url}}" target="_blank"><i class="icon icon-youtube lecturer-video"></i></a>
+                        </div>
+                      {% endif %}
                     </div>
                   </div>
                   <div class="lecturer-modal-wrapper">
@@ -267,14 +271,18 @@
                           <div class="heading name">
                             {{relation.speaker.name}}
                           </div>
+                          {% if relation.speaker.rich_description %}
                           <div>
                             <span class="heading">About:</span>
                             {{relation.speaker.rich_description|richtext}}
                           </div>
+                          {% endif %}
+                          {% if relation.speaker.talk_description %}
                           <div>
                             <span class="heading">Talk:</span>
                             {{relation.speaker.talk_description|richtext}}
                           </div>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
