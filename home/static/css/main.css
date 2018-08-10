@@ -4700,7 +4700,7 @@ div.info-slots + div.info-slots::after {
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 100;
 }
 
 .lecturer-modal-wrapper .lecturer-modal-container {
@@ -4720,6 +4720,8 @@ div.info-slots + div.info-slots::after {
   color: white;
   padding: 40px;
   position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .lecturer-modal-wrapper .lecturer-modal .close-button {
