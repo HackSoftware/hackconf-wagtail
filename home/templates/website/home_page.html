@@ -358,7 +358,7 @@
               {% for relation in page.general_partners.all %}
                 <div class="column tcell">
                   <a href="{{relation.partner.website_url}}" target="_blank">
-                    {% image relation.partner.logo max-240x120 as partner_logo %}
+                    {% image relation.partner.logo max-240x160 as partner_logo %}
                     <img src="{{partner_logo.url}}" alt="">
                   </a>
                 </div>
