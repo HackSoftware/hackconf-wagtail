@@ -4946,5 +4946,188 @@ div.info-slots + div.info-slots::after {
 }
 
 .navigation-svg-icon {
-  width:20.8px;
+  width: 20.8px;
+}
+
+.schedule-new {
+  padding-top: 100px;
+}
+
+.schedule-new .sidescroll-wrapper {
+  width: 1080px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.schedule-new .sidescroll-wrapper:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  background: linear-gradient(to right, white, transparent);
+  z-index: 1;
+}
+
+.schedule-new .sidescroll-wrapper:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  background: linear-gradient(to left, white, transparent);
+  z-index: 1;
+}
+
+.schedule-new .sidescroll-container {
+  display: flex;
+  height: 500px;
+  width: fit-content;
+  margin-left: 80px;
+}
+
+.schedule-new .sidescroll-container .lecture {
+  width: 300px;
+  flex: 300px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule-new .sidescroll-container .lecture .info {
+  flex: 1;
+  display: flex;
+}
+
+.schedule-new .sidescroll-container .lecture .info .vertical-line-container {
+  flex: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 10px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .info
+  .vertical-line-container
+  .vertical-line {
+  background-color: #fecc58;
+  flex: 1;
+  width: 5px;
+  border-radius: 10px;
+}
+
+.schedule-new .sidescroll-container .lecture .info .info-box-container {
+  flex: 1;
+  padding-top: 20px;
+}
+
+.schedule-new .sidescroll-container .lecture .info .info-box {
+  background-color: #fffada;
+  padding: 20px;
+}
+
+.schedule-new .sidescroll-container .lecture .info .info-box .title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.schedule-new .sidescroll-container .lecture .info .info-box .speaker {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.schedule-new .sidescroll-container .lecture .timeline-container {
+  flex: 90px 0;
+  position: relative;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .timeline-container
+  .avatar-time-container
+  .avatar-container {
+  position: absolute;
+  left: 18px;
+  display: flex;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .timeline-container
+  .avatar-time-container
+  .time {
+  position: absolute;
+  left: 18px;
+  top: 65px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .timeline-container
+  .avatar-time-container
+  .avatar-container
+  .avatar {
+  width: 60px;
+  height: 60px;
+  border: 2px solid black;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .timeline-container
+  .avatar:before {
+  border-radius: 50%;
+}
+
+.schedule-new .sidescroll-container .lecture .timeline-container .timeline {
+  height: 6px;
+  background-color: #fecc58;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 28px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture:first-child
+  .timeline-container
+  .timeline {
+  left: 45px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture:last-child
+  .timeline-container
+  .timeline {
+  right: auto;
+  width: 55px;
+}
+
+.with-shadow {
+  position: relative;
+}
+
+.with-shadow:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
 }

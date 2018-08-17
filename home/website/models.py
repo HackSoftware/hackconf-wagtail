@@ -262,13 +262,17 @@ class HomePage(Page):
 @register_snippet
 class Lecture(models.Model):
     topic = models.CharField(max_length=255)
-    speaker = models.ForeignKey('website.Speaker', related_name='+', null=True, blank=True)
+    speakers = models.ManyToManyField('website.Speaker', related_name='lecures')
     start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    description = RichTextField(blank=True, null=True)
 
     panels = [
         FieldPanel('topic'),
-        FieldPanel('speaker'),
-        FieldPanel('start_time')
+        FieldPanel('speakers'),
+        FieldPanel('start_time'),
+        FieldPanel('end_time'),
+        FieldPanel('description')
     ]
 
     def __str__(self):
