@@ -112,19 +112,29 @@ $(".lecturer-modal .close-button").click(function() {
     .hide();
 });
 
-$(".sidescroll-container").mousedown(function(e) {
-  if (event.which != 1) return;
-  var startX = e.pageX;
-  var startMargin = parseInt($(".sidescroll-container").css("marginLeft"));
+// $(".sidescroll-container").mousedown(function(e) {
+//   if (event.which != 1) return;
+//   var startX = e.pageX;
+//   var startMargin = parseInt($(".sidescroll-container").css("marginLeft"));
 
-  $(document).mousemove(function(mousemove) {
-    $(".sidescroll-container").css(
-      "marginLeft",
-      startMargin + (mousemove.pageX - startX)
-    );
-  });
+//   $(document).mousemove(function(mousemove) {
+//     $(".sidescroll-container").css(
+//       "marginLeft",
+//       startMargin + (mousemove.pageX - startX)
+//     );
+//   });
 
-  $(document).one("mouseup", function() {
-    $(document).unbind("mousemove");
-  });
-});
+//   $(document).one("mouseup", function() {
+//     $(document).unbind("mousemove");
+//   });
+// });
+
+$(".tabbed-interface .tabs > div").click(function() {
+  var selectedTabContent = $(this).attr("ref");
+
+  $(".tabs > div").removeClass("selected");
+  $(this).addClass("selected")
+
+  $(".tab-contents > div").removeClass("selected");
+  $("."+selectedTabContent).addClass("selected");
+})

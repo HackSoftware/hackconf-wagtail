@@ -4954,59 +4954,34 @@ div.info-slots + div.info-slots::after {
 }
 
 .schedule-new .sidescroll-wrapper {
-  width: 1080px;
+  width: 600px;
   margin: auto;
-  overflow: hidden;
   position: relative;
-}
-
-.schedule-new .sidescroll-wrapper:before {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100px;
-  background: linear-gradient(to right, white, transparent);
-  z-index: 1;
-}
-
-.schedule-new .sidescroll-wrapper:after {
-  position: absolute;
-  content: "";
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 100px;
-  background: linear-gradient(to left, white, transparent);
-  z-index: 1;
 }
 
 .schedule-new .sidescroll-container {
   display: flex;
-  height: 500px;
+  flex-direction: column;
   width: fit-content;
-  margin-left: 80px;
 }
 
 .schedule-new .sidescroll-container .lecture {
-  width: 300px;
-  flex: 300px 0;
+  width: 600px;
   display: flex;
-  flex-direction: column;
 }
 
 .schedule-new .sidescroll-container .lecture .info {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
 }
 
 .schedule-new .sidescroll-container .lecture .info .vertical-line-container {
-  flex: 50px 0;
+  flex: 35px 0;
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
-  padding-top: 10px;
+  position: relative;
 }
 
 .schedule-new
@@ -5017,18 +4992,41 @@ div.info-slots + div.info-slots::after {
   .vertical-line {
   background-color: #fecc58;
   flex: 1;
-  width: 5px;
+  height: 5px;
   border-radius: 10px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .info
+  .vertical-line-container
+  .time {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .info
+  .vertical-line-container
+  .time
+  img {
+  width: 30px;
+  height: 30px;
 }
 
 .schedule-new .sidescroll-container .lecture .info .info-box-container {
   flex: 1;
-  padding-top: 20px;
 }
 
 .schedule-new .sidescroll-container .lecture .info .info-box {
-  background-color: #fffada;
-  padding: 20px;
+  background-color: #fffdf0;
+  padding: 30px 20px 20px 20px;
 }
 
 .schedule-new .sidescroll-container .lecture .info .info-box .title {
@@ -5042,7 +5040,7 @@ div.info-slots + div.info-slots::after {
 }
 
 .schedule-new .sidescroll-container .lecture .timeline-container {
-  flex: 90px 0;
+  flex: 60px 0;
   position: relative;
 }
 
@@ -5053,19 +5051,8 @@ div.info-slots + div.info-slots::after {
   .avatar-time-container
   .avatar-container {
   position: absolute;
-  left: 18px;
   display: flex;
-}
-
-.schedule-new
-  .sidescroll-container
-  .lecture
-  .timeline-container
-  .avatar-time-container
-  .time {
-  position: absolute;
-  left: 18px;
-  top: 65px;
+  z-index: 1;
 }
 
 .schedule-new
@@ -5087,25 +5074,29 @@ div.info-slots + div.info-slots::after {
   .sidescroll-container
   .lecture
   .timeline-container
+  .avatar-time-container
+  .avatar-container
+  .avatar
+  + .avatar {
+  margin-left: 10px;
+}
+
+.schedule-new
+  .sidescroll-container
+  .lecture
+  .timeline-container
   .avatar:before {
   border-radius: 50%;
 }
 
 .schedule-new .sidescroll-container .lecture .timeline-container .timeline {
-  height: 6px;
+  width: 6px;
   background-color: #fecc58;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  margin-left: -3px;
   top: 28px;
-}
-
-.schedule-new
-  .sidescroll-container
-  .lecture:first-child
-  .timeline-container
-  .timeline {
-  left: 45px;
+  bottom: 0;
 }
 
 .schedule-new
@@ -5113,8 +5104,7 @@ div.info-slots + div.info-slots::after {
   .lecture:last-child
   .timeline-container
   .timeline {
-  right: auto;
-  width: 55px;
+  display: none;
 }
 
 .with-shadow {
@@ -5130,4 +5120,46 @@ div.info-slots + div.info-slots::after {
   right: 0;
   z-index: -1;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+
+.tabbed-interface {
+}
+
+.tabbed-interface .tabs {
+  display: flex;
+  width: 600px;
+  margin: auto;
+  border-bottom: 1px solid #fecc58;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.tabbed-interface .tabs > div {
+  padding: 15px 25px;
+  border: 1px solid #fecc58;
+  border-bottom: 0;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: -1px;
+}
+
+.tabbed-interface .tabs > div + div {
+  border-left: 0;
+}
+
+.tabbed-interface .tabs > div.selected {
+  border-bottom: 1px solid white;
+}
+
+.tab-contents {
+
+}
+
+.tab-contents > div {
+  display: none;
+}
+.tab-contents > div.selected {
+  display: block;
 }
