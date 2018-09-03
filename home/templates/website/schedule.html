@@ -32,6 +32,9 @@
           {% endfor %}
         </div>
         <div class="description">{{lecture.description|richtext}}</div>
+        {% if lecture.enroll_url %}
+          <a href="{{lecture.enroll_url}}" target="_blank">Sign up →</a>
+        {% endif %}
       </div>
     </div>
   </div>
