@@ -262,7 +262,7 @@ class HomePage(Page):
 @register_snippet
 class Lecture(models.Model):
     topic = models.CharField(max_length=255)
-    speakers = models.ManyToManyField('website.Speaker', related_name='lecures')
+    speakers = models.ManyToManyField('website.Speaker', related_name='lectures')
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     description = RichTextField(blank=True, null=True)
@@ -282,14 +282,18 @@ class Lecture(models.Model):
 @register_snippet
 class Workshop(models.Model):
     topic = models.CharField(max_length=255)
-    lector = models.CharField(max_length=255)
+    speakers = models.ManyToManyField('website.Speaker', related_name='workshops')
     start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    description = RichTextField()
     enroll_url = models.URLField(max_length=255, blank=True, null=True)
 
     panels = [
         FieldPanel('topic'),
-        FieldPanel('lector'),
+        FieldPanel('speakers'),
         FieldPanel('start_time'),
+        FieldPanel('end_time'),
+        FieldPanel('description'),
         FieldPanel('enroll_url')
     ]
 

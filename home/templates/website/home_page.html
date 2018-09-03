@@ -149,13 +149,31 @@
           </div>
           <div class="tab-contents">
             <div class="tab-content-1">
-              {% include 'website/schedule.html' with schedule=page.workshops_day_one %}
+              <div class="sidescroll-wrapper">
+                <div class="sidescroll-container">
+                  {% for relation in page.workshops_day_one.all %}
+                    {% include 'website/schedule.html' with lecture=relation.workshop %}
+                  {% endfor %}
+                </div>
+              </div>
             </div>
             <div class="tab-content-2 selected">
-              {% include 'website/schedule.html' with schedule=page.schedule_day_one %}
+              <div class="sidescroll-wrapper">
+                <div class="sidescroll-container">
+                  {% for relation in page.schedule_day_one.all %}
+                    {% include 'website/schedule.html' with lecture=relation.lecture %}
+                  {% endfor %}
+                </div>
+              </div>
             </div>
             <div class="tab-content-3">
-              {% include 'website/schedule.html' with schedule=page.schedule_day_two %}
+              <div class="sidescroll-wrapper">
+                <div class="sidescroll-container">
+                  {% for relation in page.schedule_day_two.all %}
+                    {% include 'website/schedule.html' with lecture=relation.lecture %}
+                  {% endfor %}
+                </div>
+              </div>
             </div>
           </div>
         </div>
