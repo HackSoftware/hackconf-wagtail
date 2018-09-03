@@ -1,0 +1,44 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="sidescroll-wrapper">
+  <div class="sidescroll-container">
+  {% for relation in schedule.all %}
+    <div class="lecture">
+      <div class="timeline-container">
+        <div class="timeline with-shadow">
+        </div>
+        <div class="avatar-time-container">
+          <div class="avatar-container">
+          {% for speaker in relation.lecture.speakers.all %}
+            {% image speaker.picture fill-300x300 as speaker_picture %}
+            <div class="avatar with-shadow" style="background-image:url({{speaker_picture.url}})">
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="vertical-line-container">
+          <div class="time">
+            <img src="{% static 'images/icons/IconTime.png' %}"/>
+            <b>{{relation.lecture.start_time|date:"H:i"}} - {{relation.lecture.end_time|date:"H:i"}}</b>
+          </div>
+          <div class="vertical-line with-shadow">
+          </div>
+        </div>
+        <div class="info-box-container">
+          <div class="info-box with-shadow">
+            <div class="title">{{relation.lecture.topic}}</div>
+            <div class="speaker">
+              {% for speaker in relation.lecture.speakers.all %}
+                {{speaker.name}}
+              {% endfor %}
+            </div>
+            <div class="description">{{relation.lecture.description|richtext}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
