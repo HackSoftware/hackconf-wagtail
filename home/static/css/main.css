@@ -3621,6 +3621,17 @@ p + .stat {
 .section.divider {
   border-top: 1px solid #eee;
 }
+.section.program.responsive {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .section.schedule-new {
+    display: none;
+  }
+  .section.program.responsive {
+    display: block;
+  }
+}
 .section.program .container-content {
   padding-bottom: 200px;
 }
@@ -5006,7 +5017,7 @@ div.info-slots + div.info-slots::after {
   right: 0;
   display: flex;
   align-items: center;
-  padding-bottom: 10px;
+  top: -5px;
 }
 
 .schedule-new
