@@ -573,7 +573,7 @@ class PastEvents(Orderable, models.Model):
 class Blog(Page):
     def get_context(self, request):
         context = super().get_context(request)
-        context['blog_posts'] = BlogPost.objects.live()
+        context['blog_posts'] = BlogPost.objects.live().order_by('-id')
         home_page = HomePage.objects.first()
         context['header_image_logo'] = home_page.header_image_logo
         context['footer_organized_by'] = home_page.footer_organized_by
