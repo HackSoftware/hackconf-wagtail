@@ -5,7 +5,7 @@ function initMap() {
   google.maps.event.addDomListener(window, 'load', init);
 
   var map;
-  var location = new google.maps.LatLng(42.684680, 23.318925);
+  var location = new google.maps.LatLng(42.68468, 23.318925);
   var MY_MAPTYPE_ID = 'custom_style';
   function init() {
     var featureOpts = [
@@ -40,7 +40,8 @@ function initMap() {
       mapTypeId: MY_MAPTYPE_ID
     };
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    var image = '/static/images/pmarker.png';
+    var image =
+      'https://hackconf-2019.s3.amazonaws.com/static/images/pmarker.png';
     var myLatLng = location;
     var beachMarker = new google.maps.Marker({
       position: myLatLng,
