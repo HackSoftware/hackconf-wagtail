@@ -4665,7 +4665,6 @@ div.info-slots + div.info-slots::after {
 .transparent-container {
   display: inline-block;
   margin-top: 100px;
-  margin-bottom: 100px;
   padding: 40px;
   background-color: rgba(1, 1, 1, 0.6);
 }
