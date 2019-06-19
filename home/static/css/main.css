@@ -4435,7 +4435,8 @@ div.info-slots + div.info-slots::after {
 }
 
 .lecturer {
-  background-color: #fecc58;
+  background-color: #555555;
+  color: white;
 }
 
 .lecturer .lecturer-modal-trigger {
@@ -4444,7 +4445,7 @@ div.info-slots + div.info-slots::after {
 
 .lecturer .text-container {
   position: relative;
-  padding: 0.75rem 0.75rem 1.75rem 0.75rem;
+  padding: 0.75rem 0.75rem 2.0rem 0.75rem;
 }
 .lecturer .text-container .name {
   font-size: 1.3125rem;
@@ -4464,15 +4465,20 @@ div.info-slots + div.info-slots::after {
   color: #4a4a4a;
   font-weight: 300;
 }
-.lecturer .lecturer-video::before {
+.lecturer .lecturer-icon::before {
   color: #fff;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
 }
-.lecturer .abs-container-icon {
+.lecturer .abs-icons-container {
   position: absolute;
+  bottom: 5px;
   right: 20px;
-  bottom: 0;
-  height: 2.375rem;
+  display: flex;
+  align-items: center;
+}
+
+.lecturer .abs-icons-container .icon + .icon {
+  margin-left: 10px;
 }
 
 .sp-t-5 {
@@ -4709,7 +4715,7 @@ div.info-slots + div.info-slots::after {
   height: 100%;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
 }
 
@@ -4726,7 +4732,7 @@ div.info-slots + div.info-slots::after {
 
 .lecturer-modal-wrapper .lecturer-modal {
   width: 700px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 1);
   color: white;
   padding: 40px;
   position: relative;
@@ -4777,6 +4783,24 @@ div.info-slots + div.info-slots::after {
 
 .lecturer-modal-wrapper .lecturer-modal .rich-text p {
   line-height: normal;
+}
+
+.lecturer-modal-wrapper .lecturer-modal .icons-container {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.lecturer-modal-wrapper .lecturer-modal .icons-container .icon img {
+  padding-right: 0;
+}
+
+.lecturer-modal-wrapper .lecturer-modal .icons-container .icon + .icon {
+  margin-left: 10px;
+}
+.lecturer-modal-wrapper .lecturer-modal .icons-container .icon:before {
+  color: white;
+  font-size: 1.5rem;
 }
 
 .old_partners img {
