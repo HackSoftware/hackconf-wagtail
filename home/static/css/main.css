@@ -4477,6 +4477,11 @@ div.info-slots + div.info-slots::after {
   align-items: center;
 }
 
+.lecturer .abs-icons-container .icon {
+  width: 24px;
+  height: 24px;
+}
+
 .lecturer .abs-icons-container .icon + .icon {
   margin-left: 10px;
 }
@@ -4793,6 +4798,8 @@ div.info-slots + div.info-slots::after {
 
 .lecturer-modal-wrapper .lecturer-modal .icons-container .icon img {
   padding-right: 0;
+  width: 24px;
+  height: 24px;
 }
 
 .lecturer-modal-wrapper .lecturer-modal .icons-container .icon + .icon {
