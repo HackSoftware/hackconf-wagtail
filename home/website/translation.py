@@ -35,6 +35,7 @@ class HomePageTranslationOptions(WagtailTranslationOptions):
         'url_path',
         'live',
         'speakers_title',
+        'workshop_speakers_title',
         'schedule_title'
     )
 

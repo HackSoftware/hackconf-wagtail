@@ -66,6 +66,7 @@ class HomePage(Page):
     # speackers section
     show_speakers_section = models.BooleanField(default=False)
     speakers_title = models.CharField(max_length=50, blank=True, null=True)
+    workshop_speakers_title = models.CharField(max_length=50, blank=True, null=True)
 
     # sponsors section
     show_sponsors_section = models.BooleanField(default=False)
@@ -187,7 +188,9 @@ class HomePage(Page):
 
         FieldPanel('show_speakers_section'),
         FieldPanel('speakers_title'),
-        InlinePanel('speakers_info', label="Speakers Info"),
+        InlinePanel('speakers_info', label="Lectures Speakers Info"),
+        FieldPanel('workshop_speakers_title'),
+        InlinePanel('workshops_speakers_info', label="Workshops Speakers Info"),
 
         FieldPanel('sponsors_text'),
         FieldPanel('attendees_text'),
@@ -385,6 +388,18 @@ class Speaker(models.Model):
 
 class SpeakersInfo(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='speakers_info')
+    speaker = models.ForeignKey('website.Speaker', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('speaker'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.speaker.name)
+
+
+class WorkshopsSpeakersInfo(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='workshops_speakers_info')
     speaker = models.ForeignKey('website.Speaker', related_name='+')
 
     panels = [

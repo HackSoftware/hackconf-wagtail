@@ -382,6 +382,101 @@
               </div>
             </div>
           </div>
+
+          <div class="medium-11 medium-centered large-11 large-centered columns">
+            <h2 class="text-center">{{ page.workshop_speakers_title }}</h2>
+            <div class="lecturers-wrapper">
+              <div class="row">
+                {% for relation in page.workshops_speakers_info.all %}
+                {% image relation.speaker.picture fill-300x300 as speaker_picture %}
+                <div class="small-6 medium-4 large-3 columns spacer lecturer-container">
+                  <div class="lecturer">
+                    <img src="{{speaker_picture.url}}" class="lecturer-modal-trigger">
+                    <div class="text-container">
+                      <h3 class="name lecturer-modal-trigger">{{relation.speaker.name}}</h3>
+                      {% if relation.speaker.description %}
+                      <p class="desk">
+                        {{relation.speaker.description}}
+                      </p>
+                      {% endif %}
+                      <div class="abs-icons-container">
+                      {% if relation.speaker.twitter_url %}
+                        <div class="icon">
+                          <a href="{{relation.speaker.twitter_url}}" target="_blank"><i class="icon icon-twitter lecturer-icon"></i></a>
+                        </div>
+                      {% endif %}
+                      {% if relation.speaker.facebook_url %}
+                        <div class="icon">
+                          <a href="{{relation.speaker.facebook_url}}" target="_blank"><i class="icon icon-fb lecturer-icon"></i></a>
+                        </div>
+                      {% endif %}
+                      {% if relation.speaker.linked_in_url %}
+                        <div class="icon">
+                          <a href="{{relation.speaker.linked_in_url}}" target="_blank"><img src="{% static "images/icons/link_white.svg"%}"></i></a>
+                        </div>
+                      {% endif %}
+                      {% if relation.speaker.video_url %}
+                        <div class="icon">
+                          <a href="{{relation.speaker.video_url}}" target="_blank"><i class="icon icon-youtube lecturer-icon"></i></a>
+                        </div>
+                      {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lecturer-modal-wrapper">
+                    <div class="lecturer-modal-container">
+                      <div class="lecturer-modal row">
+                        <div class="close-button">X</div>
+                        <div class="medium-4">
+                          <img src="{{speaker_picture.url}}">
+                          <div class="icons-container">
+                          {% if relation.speaker.twitter_url %}
+                            <div class="icon">
+                              <a href="{{relation.speaker.twitter_url}}" target="_blank"><i class="icon icon-twitter lecturer-icon"></i></a>
+                            </div>
+                          {% endif %}
+                          {% if relation.speaker.facebook_url %}
+                            <div class="icon">
+                              <a href="{{relation.speaker.facebook_url}}" target="_blank"><i class="icon icon-fb lecturer-icon"></i></a>
+                            </div>
+                          {% endif %}
+                          {% if relation.speaker.linked_in_url %}
+                            <div class="icon">
+                              <a href="{{relation.speaker.linked_in_url}}" target="_blank"><img src="{% static "images/icons/link_white.svg"%}"></i></a>
+                            </div>
+                          {% endif %}
+                          {% if relation.speaker.video_url %}
+                            <div class="icon">
+                              <a href="{{relation.speaker.video_url}}" target="_blank"><i class="icon icon-youtube lecturer-icon"></i></a>
+                            </div>
+                          {% endif %}
+                          </div>
+                        </div>
+                        <div class="medium-8">
+                          <div class="heading name">
+                            {{relation.speaker.name}}
+                          </div>
+                          {% if relation.speaker.rich_description %}
+                          <div>
+                            <span class="heading">About:</span>
+                            {{relation.speaker.rich_description|richtext}}
+                          </div>
+                          {% endif %}
+                          {% if relation.speaker.talk_description %}
+                          <div>
+                            <span class="heading">Workshop:</span>
+                            {{relation.speaker.talk_description|richtext}}
+                          </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
         </div>
       </article>
     </section>
