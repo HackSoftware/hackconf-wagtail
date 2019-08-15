@@ -89,8 +89,10 @@ class HomePage(Page):
     show_gold_partners = models.BooleanField(default=True)
     show_silver_partners = models.BooleanField(default=True)
     show_other_partners = models.BooleanField(default=True)
+    show_sticker_partners = models.BooleanField(default=True)
     show_media_partners = models.BooleanField(default=True)
     show_branch_partners = models.BooleanField(default=True)
+    show_accomodation_partners = models.BooleanField(default=True)
     show_old_partners = models.BooleanField(default=True)
 
     general_partners_title = models.CharField(max_length=50, null=True, blank=True)
@@ -98,8 +100,10 @@ class HomePage(Page):
     gold_partners_title = models.CharField(max_length=50, null=True, blank=True)
     silver_partners_title = models.CharField(max_length=50, null=True, blank=True)
     other_partners_title = models.CharField(max_length=50, null=True, blank=True)
+    sticker_partners_title = models.CharField(max_length=50, null=True, blank=True)
     media_partners_title = models.CharField(max_length=50, null=True, blank=True)
     branch_partners_title = models.CharField(max_length=50, null=True, blank=True)
+    accomodation_partners_title = models.CharField(max_length=50, null=True, blank=True)
     old_partners_title = models.CharField(max_length=50, null=True, blank=True)
 
     # past events section
@@ -215,12 +219,18 @@ class HomePage(Page):
         FieldPanel('other_partners_title'),
         FieldPanel('show_other_partners'),
         InlinePanel('other_partners', label="Other Partners"),
+        FieldPanel('sticker_partners_title'),
+        FieldPanel('show_sticker_partners'),
+        InlinePanel('sticker_partners', label="Sticker Partners"),
         FieldPanel('media_partners_title'),
         FieldPanel('show_media_partners'),
         InlinePanel('media_partners', label="Media Partners"),
         FieldPanel('branch_partners_title'),
         FieldPanel('show_branch_partners'),
         InlinePanel('branch_partners', label="Branch Partners"),
+        FieldPanel('accomodation_partners_title'),
+        FieldPanel('show_accomodation_partners'),
+        InlinePanel('accomodation_partners', label="Accomodation Partners"),
         FieldPanel('show_old_partners'),
         FieldPanel('old_partners_title'),
         InlinePanel('old_partners', label="Old Partners"),
@@ -504,6 +514,18 @@ class OtherPartners(Orderable, models.Model):
         return "{} -> {}".format(self.page.title, self.partner.name)
 
 
+class StickerPartners(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='sticker_partners')
+    partner = models.ForeignKey('website.Partner', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('partner'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.partner.name)
+
+
 class MediaPartners(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='media_partners')
     partner = models.ForeignKey('website.Partner', related_name='+')
@@ -518,6 +540,18 @@ class MediaPartners(Orderable, models.Model):
 
 class BranchPartners(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='branch_partners')
+    partner = models.ForeignKey('website.Partner', related_name='+')
+
+    panels = [
+        SnippetChooserPanel('partner'),
+    ]
+
+    def __str__(self):
+        return "{} -> {}".format(self.page.title, self.partner.name)
+
+
+class AccomodationPartners(Orderable, models.Model):
+    page = ParentalKey('website.HomePage', related_name='accomodation_partners')
     partner = models.ForeignKey('website.Partner', related_name='+')
 
     panels = [

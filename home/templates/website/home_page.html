@@ -608,12 +608,32 @@
             </div>
           </div>
           {% endif %}
-          {% if page.other_partners.all and page.show_other_partners%}
+          {% if page.other_partners.all and page.show_other_partners %}
           <div class="row">
             <div class="small-12 medium-8 medium-centered columns menu-centered">
               <h4 class="sp-t-50">{{ page.other_partners_title }}</h4>
               <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
                 {% for relation in page.other_partners.all %}
+                <div class="column tcell">
+                  <div class="p-info">
+                    <a href="{{relation.partner.website_url}}" target="_blank">
+                      {% image relation.partner.logo max-240x120 as partner_logo %}
+                      <img src="{{partner_logo.url}}" alt="">
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if page.sticker_partners.all and page.show_sticker_partners %}
+          <div class="row">
+            <div class="small-12 medium-8 medium-centered columns menu-centered">
+              <h4 class="sp-t-50">{{ page.sticker_partners_title }}</h4>
+              <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
+                {% for relation in page.sticker_partners.all %}
                 <div class="column tcell">
                   <div class="p-info">
                     <a href="{{relation.partner.website_url}}" target="_blank">
@@ -665,6 +685,26 @@
           </div>
           {% endif %}
         {% endif %}
+
+        {% if page.accomodation_partners.all and page.show_accomodation_partners %}
+          <div class="row">
+            <div class="small-12 medium-8 medium-centered columns menu-centered">
+              <h4 class="sp-t-50">{{ page.accomodation_partners_title }}</h4>
+              <div class="row small-up-2 medium-up-3 large-up-4 align-center wrapper-sponsors">
+                {% for relation in page.accomodation_partners.all %}
+                <div class="column tcell">
+                  <div class="p-info">
+                    <a href="{{relation.partner.website_url}}" target="_blank">
+                      {% image relation.partner.logo max-240x120 as partner_logo %}
+                      <img src="{{partner_logo.url}}" alt="">
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
       </article>
     </section>
     {% if page.show_old_partners %}
