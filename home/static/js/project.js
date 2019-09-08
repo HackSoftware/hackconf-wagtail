@@ -129,7 +129,7 @@ $(".lecturer-modal .close-button").click(function() {
 //   });
 // });
 
-$(".tabbed-interface .tabs > div").click(function() {
+$(".schedule-container__tabs > div").click(function() {
   var selectedTabContent = $(this).attr("ref");
 
   $(".tabs > div").removeClass("selected");

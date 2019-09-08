@@ -1,0 +1,56 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="schedule-item-row">
+  <div class="schedule-item schedule-lecture">
+    <div class="schedule-item__hall">
+      <div>Hall 1</div>
+    </div>
+    <div class="schedule-item__image">
+      {% for speaker in lecture_1.speakers.all %}
+        {% image speaker.picture fill-300x300 as speaker_picture %}
+        <img src="{{ speaker_picture.url }}" />
+      {% endfor %}
+    </div>
+    <div class="schedule-item__text">
+      <div class="schedile-item__text__time">
+        {{ lecture_1.start_time|date:"H:i" }} - {{ lecture_1.end_time|date:"H:i" }}
+      </div>
+      <div class="schedule-item__text__label">
+        {{ lecture_1.topic }}
+      </div>
+      <div class="schedule-item__speaker">
+        {% for speaker in lecture_1.speakers.all %}
+          {{speaker.name}}
+        {% endfor %}
+      </div>
+    </div> 
+  </div>  
+
+
+  {% if lecture_2 %}
+    <div class="schedule-item schedule-lecture">
+      <div class="schedule-item__hall">
+        <div>Hall 2</div>
+      </div>
+      <div class="schedule-item__image">
+        {% for speaker in lecture_2.speakers.all %}
+          {% image speaker.picture fill-300x300 as speaker_picture %}
+          <img src="{{ speaker_picture.url }}" />
+        {% endfor %}
+      </div>
+      <div class="schedule-item__text">
+        <div class="schedile-item__text__time">
+          {{ lecture_2.start_time|date:"H:i" }} - {{ lecture_2.end_time|date:"H:i" }}
+        </div>
+        <div class="schedule-item__text__label">
+          {{ lecture_2.topic }}
+        </div>
+        <div class="schedule-item__speaker" >
+        {% for speaker in lecture_2.speakers.all %}
+          {{speaker.name}}
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

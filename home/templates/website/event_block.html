@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="schedule-item-row">
+  <div class="schedule-item schedule-event{% if event.is_registration %} schedule-event--registration{% endif %}">
+    <div class="schedule-item__hall">
+      <div>Hall 1</div>
+    </div>
+    <div class="schedule-item__image">
+      {% if event.is_registration %}
+        <img src="{% static 'images/icons/clock_10.png' %}" />
+      {% else %}
+        <img src="{% static 'images/icons/star.png' %}" />
+      {% endif %}
+    </div>
+    <div class="schedule-item__text">
+      <div class="schedile-item__text__time">
+        {{ event.start_time|date:"H:i" }} - {{ event.end_time|date:"H:i" }}
+      </div>
+      <div class="schedule-item__text__label">
+        {{ event.topic }}
+      </div>
+    </div>
+  </div>
+</div>

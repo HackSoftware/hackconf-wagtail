@@ -275,17 +275,25 @@ class HomePage(Page):
 @register_snippet
 class Lecture(models.Model):
     topic = models.CharField(max_length=255)
-    speakers = models.ManyToManyField('website.Speaker', related_name='lectures')
+    speakers = models.ManyToManyField('website.Speaker', related_name='lectures', blank=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     description = RichTextField(blank=True, null=True)
+    is_event = models.BooleanField(default=False)
+    is_coffee_break = models.BooleanField(default=False)
+    is_lunch = models.BooleanField(default=False)
+    is_registration = models.BooleanField(default=False)
 
     panels = [
         FieldPanel('topic'),
         FieldPanel('speakers'),
         FieldPanel('start_time'),
         FieldPanel('end_time'),
-        FieldPanel('description')
+        FieldPanel('description'),
+        FieldPanel('is_event'),
+        FieldPanel('is_coffee_break'),
+        FieldPanel('is_lunch'),
+        FieldPanel('is_registration'),
     ]
 
     def __str__(self):
@@ -316,10 +324,12 @@ class Workshop(models.Model):
 
 class ScheduleDayOne(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='schedule_day_one')
-    lecture = models.ForeignKey('website.Lecture', related_name='+')
+    lecture_hall_1 = models.ForeignKey('website.Lecture', related_name='+')
+    lecture_hall_2 = models.ForeignKey('website.Lecture', related_name='+', blank=True, null=True)
 
     panels = [
-        SnippetChooserPanel('lecture'),
+        SnippetChooserPanel('lecture_hall_1'),
+        SnippetChooserPanel('lecture_hall_2'),
     ]
 
     def __str__(self):
@@ -328,10 +338,12 @@ class ScheduleDayOne(Orderable, models.Model):
 
 class ScheduleDayTwo(Orderable, models.Model):
     page = ParentalKey('website.HomePage', related_name='schedule_day_two')
-    lecture = models.ForeignKey('website.Lecture', related_name='+')
+    lecture_hall_1 = models.ForeignKey('website.Lecture', related_name='+')
+    lecture_hall_2 = models.ForeignKey('website.Lecture', related_name='+', blank=True, null=True)
 
     panels = [
-        SnippetChooserPanel('lecture'),
+        SnippetChooserPanel('lecture_hall_1'),
+        SnippetChooserPanel('lecture_hall_2'),
     ]
 
     def __str__(self):

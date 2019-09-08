@@ -133,59 +133,51 @@
     {% endif %}
 
     {% if page.show_schedule %}
-    <section class="section schedule-new" id="program">
+    <section class="section schedule-container" id="program">
       <article>
         <div>
           <h2 class="text-center">{{ page.schedule_title }}</h2>
         </div>
-        <div class="tabbed-interface">
-          <div class="tabs">
-            <div ref="tab-content-1">
-              <div>Workshops</div>
-              <div>14th of September</div>
-            </div>
-            <div ref="tab-content-2" class="selected">
-              <div>Day 1</div>
-              <div>15th of September</div>
-            </div>
-            <div ref="tab-content-3">
-              <div>Day 2</div>
-              <div>16th of September</div>
-            </div>
+        <div class="schedule-container__tabs tabs">
+          <div ref="tab-content-1" class="schedule-container__tabs__tab">
+            Workshops
           </div>
-          <div class="tab-contents">
-            <div class="tab-content-1">
-              <div class="sidescroll-wrapper">
-                <div class="sidescroll-container">
-                  {% for relation in page.workshops_day_one.all %}
-                    {% include 'website/schedule.html' with lecture=relation.workshop %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-            <div class="tab-content-2 selected">
-              <div class="sidescroll-wrapper">
-                <div class="sidescroll-container">
-                  {% for relation in page.schedule_day_one.all %}
-                    {% include 'website/schedule.html' with lecture=relation.lecture %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-            <div class="tab-content-3">
-              <div class="sidescroll-wrapper">
-                <div class="sidescroll-container">
-                  {% for relation in page.schedule_day_two.all %}
-                    {% include 'website/schedule.html' with lecture=relation.lecture %}
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
+          <div ref="tab-content-2" class="schedule-container__tabs__tab selected">
+            Day 1
+          </div>
+          <div ref="tab-content-3" class="schedule-container__tabs__tab">
+            Day 2
+          </div>
+        </div>
+        <div class="tab-contents">
+          <div class="schedlue-item-container tab-content-1">
+            {% for relation in page.workshops_day_one.all %}
+              {% include 'website/new_schedule.html' with lecture_1=relation.workshop %}
+            {% endfor %}
+          </div>
+          <div class="schedlue-item-container tab-content-2 selected">
+            {% for relation in page.schedule_day_one.all %}
+              {% if relation.lecture_hall_1.is_coffee_break or relation.lecture_hall_1.is_lunch %}
+                {% include 'website/coffee_break.html' with event=relation.lecture_hall_1 %}
+              {% elif relation.lecture_hall_1.is_event %}
+                {% include 'website/event_block.html' with event=relation.lecture_hall_1 %}
+              {% else %}
+                {% include 'website/new_schedule.html' with lecture_1=relation.lecture_hall_1 lecture_2=relation.lecture_hall_2 %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="schedlue-item-container tab-content-3">
+            {% for relation in page.schedule_day_two.all %}
+              {% include 'website/new_schedule.html' with lecture_1=relation.lecture_hall_1 lecture_2=relation.lecture_hall_2 %}
+            {% endfor %}
           </div>
         </div>
       </article>
     </section>
+    {% endif %}
 
+
+    {% if page.show_schedule %}
     <section class="section program responsive">
       <article class="container container-content">
         <div class="row">

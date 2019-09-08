@@ -1,0 +1,21 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+<div class="schedule-item-row">
+  <div class="schedule-item schedule-break">
+    <div class="schedule-item__image">
+      {% if event.is_coffee_break %}
+        <img src="{% static 'images/icons/coffee.png' %}" />
+      {% elif event.is_lunch %}
+        <img src="{% static 'images/icons/lunch_icon.png' %}" />
+      {% endif %}
+    </div>
+    <div class="schedule-item__text">
+      <div class="schedile-item__text__time">
+        {{ event.start_time|date:"H:i" }} - {{ event.end_time|date:"H:i" }}
+      </div>
+      <div class="schedule-item__text__label">
+        {{ event.topic }}
+      </div>
+    </div>  
+  </div>
+</div>
