@@ -2,16 +2,22 @@
 
 <div class="schedule-item-row">
   <div class="schedule-item schedule-event{% if event.is_registration %} schedule-event--registration{% endif %}">
-    <div class="schedule-item__hall">
-      <div>Hall 1</div>
-    </div>
-    <div class="schedule-item__image">
-      {% if event.is_registration %}
+    {% if event.is_registration %}
+      <div class="schedule-item__image">  
         <img src="{% static 'images/icons/clock_10.png' %}" />
-      {% else %}
+      </div>
+    {% elif event.is_goodbye_drink %}
+      <div class="schedule-item__image">  
+        <img src="{% static 'images/icons/clinking-beer-mugs.png' %}" />
+      </div>
+    {% else %}
+      <div class="schedule-item__hall">
+        <div>Hall 1</div>
+      </div>
+      <div class="schedule-item__image">
         <img src="{% static 'images/icons/star.png' %}" />
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
     <div class="schedule-item__text">
       <div class="schedile-item__text__time">
         {{ event.start_time|date:"H:i" }} - {{ event.end_time|date:"H:i" }}
@@ -19,6 +25,11 @@
       <div class="schedule-item__text__label">
         {{ event.topic }}
       </div>
+      {% if event.is_registration %}
+        <div class="schedule-item__text__description">
+          {{ event.description|richtext }}
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>

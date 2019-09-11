@@ -152,7 +152,7 @@
         <div class="tab-contents">
           <div class="schedlue-item-container tab-content-1">
             {% for relation in page.workshops_day_one.all %}
-              {% include 'website/new_schedule.html' with lecture_1=relation.workshop %}
+              {% include 'website/new_schedule.html' with lecture_1=relation.workshop is_workshop=True %}
             {% endfor %}
           </div>
           <div class="schedlue-item-container tab-content-2 selected">
@@ -168,7 +168,13 @@
           </div>
           <div class="schedlue-item-container tab-content-3">
             {% for relation in page.schedule_day_two.all %}
-              {% include 'website/new_schedule.html' with lecture_1=relation.lecture_hall_1 lecture_2=relation.lecture_hall_2 %}
+              {% if relation.lecture_hall_1.is_coffee_break or relation.lecture_hall_1.is_lunch %}
+                {% include 'website/coffee_break.html' with event=relation.lecture_hall_1 %}
+              {% elif relation.lecture_hall_1.is_event %}
+                {% include 'website/event_block.html' with event=relation.lecture_hall_1 %}
+              {% else %}
+                {% include 'website/new_schedule.html' with lecture_1=relation.lecture_hall_1 lecture_2=relation.lecture_hall_2 %}
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -176,105 +182,6 @@
     </section>
     {% endif %}
 
-
-    {% if page.show_schedule %}
-    <section class="section program responsive">
-      <article class="container container-content">
-        <div class="row">
-          <div class="medium-12 medium-centered large-11 large-centered columns">
-            <h2 class="text-center">{{ page.schedule_title }}</h2>
-            <div class="row program">
-              <div class="small-12 large-4 columns">
-                <div class="table-program yellow">
-                  <div class="table-header">
-                    <div class="row align-middle">
-                      <div class="medium-7 columns">
-                        <span class="heading">DAY 1</span>
-                      </div>
-                      <div class="medium-5 columns">
-                        <span class="date">15/9/2018</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% for relation in page.schedule_day_one.all %}
-                  <div class="table-row">
-                    <div class="row">
-                      <div class="medium-9 columns">
-                        <span class="event">{{relation.lecture.topic}}</span>
-                        <span class="name">{{relation.lecture.speaker.name}}</span>
-                      </div>
-                      <div class="medium-3 columns">
-                        <span class="time">{{relation.lecture.start_time|time:"H:i"}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-              <div class="small-12 large-4 columns">
-                <div class="table-program orange">
-                  <div class="table-header">
-                    <div class="row align-middle">
-                      <div class="medium-7 columns">
-                        <span class="heading">DAY 2</span>
-                      </div>
-                      <div class="medium-5 columns">
-                        <span class="date">16/9/2018</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% for relation in page.schedule_day_two.all %}
-                  <div class="table-row">
-                    <div class="row">
-                      <div class="medium-9 columns">
-                        <span class="event">{{relation.lecture.topic}}</span>
-                        <span class="name">{{relation.lecture.speaker.name}}</span>
-                      </div>
-                      <div class="medium-3 columns">
-                        <span class="time">{{relation.lecture.start_time|time:"H:i"}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-              <div class="small-12 large-4 columns">
-                <div class="table-program green">
-                  <div class="table-header">
-                    <div class="row align-middle">
-                      <div class="medium-7 columns">
-                        <span class="heading">Workshops</span>
-                      </div>
-                      <div class="medium-5 columns">
-                        <span class="date">14/09/2018</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% for relation in page.workshops_day_one.all %}
-                  <div class="table-row">
-                    <div class="row">
-                      <div class="medium-9 columns">
-                        {% if relation.workshop.enroll_url %}
-                        <span class="event"><a href="{{relation.workshop.enroll_url}}" target="_blank">{{relation.workshop.topic}}</a></span>
-                        {% else %}
-                        <span class="event">{{relation.workshop.topic}}</span>
-                        {% endif %}
-                        <span class="name">{{relation.workshop.lector}}</span>
-                      </div>
-                      <div class="medium-3 columns">
-                        <span class="time">{{relation.workshop.start_time|time:"H:i"}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-    {% endif %}
 
     {% if page.show_speakers_section %}
     <section id="lecturers" class="section lecturers divider">

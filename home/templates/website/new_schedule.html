@@ -3,7 +3,11 @@
 <div class="schedule-item-row">
   <div class="schedule-item schedule-lecture">
     <div class="schedule-item__hall">
+      {% if is_workshop %}
+      <div>{{ lecture_1.hall_name }}</div>
+      {% else %}
       <div>Hall 1</div>
+      {% endif %}
     </div>
     <div class="schedule-item__image">
       {% for speaker in lecture_1.speakers.all %}
@@ -20,11 +24,16 @@
       </div>
       <div class="schedule-item__speaker">
         {% for speaker in lecture_1.speakers.all %}
-          {{speaker.name}}
+          <span>{{speaker.name}}</span>
         {% endfor %}
       </div>
-    </div> 
-  </div>  
+      <!--
+      <div class="schedule-item__more">
+        <img src="{% static 'images/icons/mag_glass.png' %}" />
+      </div>
+      -->
+    </div>
+  </div>
 
 
   {% if lecture_2 %}
@@ -50,6 +59,11 @@
           {{speaker.name}}
         {% endfor %}
         </div>
+        <!--
+        <div class="schedule-item__more">
+          <img src="{% static 'images/icons/mag_glass.png' %}" />
+        </div>
+        -->
       </div>
     </div>
   {% endif %}

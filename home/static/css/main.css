@@ -5218,6 +5218,14 @@ div.info-slots + div.info-slots::after {
   width: 435px;
 }
 
+@media screen and (max-width: 460px) {
+  .schedule-container__tabs {
+    grid-template-columns: 1fr;
+    margin: 0 20px;
+    width: calc(100% - 40px);
+  }
+}
+
 .schedule-container__tabs__tab {
   height: 40px;
   font-size: 24px;
@@ -5246,7 +5254,7 @@ div.info-slots + div.info-slots::after {
 }
 
 .schedule-item.schedule-event {
-  width: 230px;
+  width: 260px;
   height: 70px;
 }
 
@@ -5255,13 +5263,14 @@ div.info-slots + div.info-slots::after {
 }
 
 .schedule-event.schedule-event--registration {
-  width: 300px;
-  height: 70px;
+  width: 400px;
+  height: 100px;
 }
 
 .schedule-item.schedule-lecture {
   width: 500px;
   background-color: #fcfcfc;
+  position: relative;
 }
 .schedule-item.schedule-lecture + .schedule-lecture {
   margin-left: 200px;
@@ -5276,6 +5285,15 @@ div.info-slots + div.info-slots::after {
   display: flex;
   justify-content: center;
   padding: 10px;
+}
+@media screen and (max-width: 900px) {
+  .schedule-item-row {
+    flex-wrap: wrap;
+  }
+  .schedule-item.schedule-lecture + .schedule-lecture {
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }
 
 .schedule-item__hall {
@@ -5319,6 +5337,7 @@ div.info-slots + div.info-slots::after {
   flex-direction: column;
   align-items: center;
   font-size: 20px;
+  margin: 0 20px;
   flex:1;
 }
 
@@ -5341,4 +5360,27 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item.schedule.event .schedule-item__text__label {
   font-size: 24px;
+}
+
+.schedule-item__speaker span:after {
+  content: ", ";
+}
+
+.schedule-item__speaker span:last-child:after {
+  content: "";
+}
+
+.schedule-item__text__description {
+  font-size: 14px;
+}
+
+.schedule-item__more {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  cursor: pointer;
+}
+
+.schedule-item__more img {
+  width: 30px;
 }

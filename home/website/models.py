@@ -283,6 +283,7 @@ class Lecture(models.Model):
     is_coffee_break = models.BooleanField(default=False)
     is_lunch = models.BooleanField(default=False)
     is_registration = models.BooleanField(default=False)
+    is_goodbye_drink = models.BooleanField(default=False)
 
     panels = [
         FieldPanel('topic'),
@@ -294,6 +295,7 @@ class Lecture(models.Model):
         FieldPanel('is_coffee_break'),
         FieldPanel('is_lunch'),
         FieldPanel('is_registration'),
+        FieldPanel('is_goodbye_drink'),
     ]
 
     def __str__(self):
@@ -308,6 +310,7 @@ class Workshop(models.Model):
     end_time = models.DateTimeField()
     description = RichTextField()
     enroll_url = models.URLField(max_length=255, blank=True, null=True)
+    hall_name = models.CharField(max_length=255)
 
     panels = [
         FieldPanel('topic'),
@@ -315,7 +318,8 @@ class Workshop(models.Model):
         FieldPanel('start_time'),
         FieldPanel('end_time'),
         FieldPanel('description'),
-        FieldPanel('enroll_url')
+        FieldPanel('enroll_url'),
+        FieldPanel('hall_name'),
     ]
 
     def __str__(self):
