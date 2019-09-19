@@ -5278,7 +5278,7 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item.schedule-break {
   width: 300px;
-  height: 60px;
+  height: 70px;
 }
 
 .schedule-item-row {
@@ -5318,6 +5318,8 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item__image {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 160px;
   justify-content: center;
   align-items: center;
   margin-left: 20px;
@@ -5325,6 +5327,10 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item__image img {
   width: 60px;
+}
+
+.schedule-lecture .schedule-item__image img {
+  margin: 10px;
 }
 
 .schedule-item__image img + img {
@@ -5383,4 +5389,78 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item__more img {
   width: 30px;
+}
+
+.schedule-item-modal-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 100;
+}
+
+.schedule-item-modal-wrapper.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.schedule-item-modal {
+  width: 600px;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  margin-top: 100px;
+}
+
+.schedule-item-modal .close-button {
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+}
+.schedule-item-modal .close-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.schedule-item-modal .speakers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.schedule-item-modal .speakers-container img {
+  height: 200px;
+  margin: 10px;
+}
+
+.schedule-item .sign-up-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.schedule-item .sign-up-button {
+  background-color: #ff9900;
+  border-radius: 10px;
+  height: 40px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.schedule-item .sign-up-button:hover {
+  background-color: #ff9900aa;
 }

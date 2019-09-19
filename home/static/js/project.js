@@ -99,6 +99,8 @@ $(".newsletter button[type='submit']").click(function(e) {
   );
 });
 
+
+// lecturer modal handlers
 $(".lecturer .lecturer-modal-trigger").click(function() {
   $(this)
     .parents(".lecturer-container")
@@ -112,23 +114,16 @@ $(".lecturer-modal .close-button").click(function() {
     .hide();
 });
 
-// $(".sidescroll-container").mousedown(function(e) {
-//   if (event.which != 1) return;
-//   var startX = e.pageX;
-//   var startMargin = parseInt($(".sidescroll-container").css("marginLeft"));
+// schedule modal handler
+$(".schedule-item__more").click(function() {
+  $(this).parents(".schedule-item").find(".schedule-item-modal-wrapper").addClass("active");
+})
 
-//   $(document).mousemove(function(mousemove) {
-//     $(".sidescroll-container").css(
-//       "marginLeft",
-//       startMargin + (mousemove.pageX - startX)
-//     );
-//   });
+$(".schedule-item-modal .close-button").click(function() {
+  $(this).parents(".schedule-item").find(".schedule-item-modal-wrapper").removeClass("active");
+})
 
-//   $(document).one("mouseup", function() {
-//     $(document).unbind("mousemove");
-//   });
-// });
-
+// schedule tabbed interface switcher
 $(".schedule-container__tabs > div").click(function() {
   var selectedTabContent = $(this).attr("ref");
 

@@ -27,11 +27,34 @@
           <span>{{speaker.name}}</span>
         {% endfor %}
       </div>
-      <!--
+      {% if is_workshop and lecture_1.enroll_url %}
+      <div class="sign-up-button-container">
+        <a href="{{ lecture_1.enroll_url }}" target="_blank" class="sign-up-button">
+          Sign up for workshop
+        </a>
+      </div>
+      {% endif %}
       <div class="schedule-item__more">
         <img src="{% static 'images/icons/mag_glass.png' %}" />
       </div>
-      -->
+    </div>
+    <div class="schedule-item-modal-wrapper">
+      <div class="schedule-item-modal">
+        <div class="close-button">X</div>
+        
+        <div class="speakers-container">
+          {% for speaker in lecture_1.speakers.all %}
+            {% image speaker.picture fill-300x300 as speaker_picture %}
+            <img src="{{ speaker_picture.url }}" alt="{{ speaker.name }}" />
+          {% endfor %}
+        </div>
+        <div class="lecture-container">
+          <h2>{{ lecture_1.topic }}</h2>
+          <div>
+            {{ lecture_1.description | richtext }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -59,11 +82,26 @@
           {{speaker.name}}
         {% endfor %}
         </div>
-        <!--
         <div class="schedule-item__more">
           <img src="{% static 'images/icons/mag_glass.png' %}" />
         </div>
-        -->
+      </div>
+      <div class="schedule-item-modal-wrapper">
+        <div class="schedule-item-modal">
+          <div class="close-button">X</div>
+          <div class="speakers-container">
+            {% for speaker in lecture_2.speakers.all %}
+              {% image speaker.picture fill-300x300 as speaker_picture %}
+              <img src="{{ speaker_picture.url }}" alt="{{ speaker.name }}" />
+            {% endfor %}
+          </div>
+          <div class="lecture-container">
+            <h2>{{ lecture_2.topic }}</h2>
+            <div>
+              {{ lecture_2.description | richtext }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   {% endif %}
