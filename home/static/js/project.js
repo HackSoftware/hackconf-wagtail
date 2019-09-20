@@ -116,10 +116,12 @@ $(".lecturer-modal .close-button").click(function() {
 
 // schedule modal handler
 $(".schedule-item__more").click(function() {
+  $("body").addClass("with-modal");
   $(this).parents(".schedule-item").find(".schedule-item-modal-wrapper").addClass("active");
 })
 
 $(".schedule-item-modal .close-button").click(function() {
+  $("body").removeClass("with-modal");
   $(this).parents(".schedule-item").find(".schedule-item-modal-wrapper").removeClass("active");
 })
 

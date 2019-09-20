@@ -5413,10 +5413,11 @@ div.info-slots + div.info-slots::after {
   padding: 20px;
   background-color: black;
   color: white;
-  max-height: 100%;
+  max-height: calc(100% - 100px);
   max-width: 100%;
   overflow-y: auto;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .schedule-item-modal .close-button {
@@ -5463,4 +5464,8 @@ div.info-slots + div.info-slots::after {
 
 .schedule-item .sign-up-button:hover {
   background-color: #ff9900aa;
+}
+
+body.with-modal {
+  overflow: hidden;
 }
