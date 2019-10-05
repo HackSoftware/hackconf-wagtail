@@ -272,3 +272,6 @@ ADMIN_URL = r'^admin/'
 # Your common stuff: Below this line define 3rd party library settings
 
 WAGTAIL_SITE_NAME = ''
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
